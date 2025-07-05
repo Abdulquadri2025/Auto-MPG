@@ -77,13 +77,15 @@ SELECT COUNT (*) AS null_horsepower_count
 FROM auto_mpg
 WHERE horsepower IS NULL
 ```
+![](https://github.com/Abdulquadri2025/Auto-MPG/blob/main/Handling%20missing%20data.png)
+
   - The analysis revealed that some horsepower entries were either missing or non-numeric. To address this, a new column, horsepower clean, was created to store cleaned, numeric-only values:
 
 ```
-ALTER TABLE auto_mpg ADD horsepower clean FLOAT;
 UPDATE auto_mpg
-SET horsepower_clean = TRY_CAST (horsepower AS FLOAT)
-WHERE ISNUMERIC (horsepower) = 1;
+SET horsepower_clean = TRY_CAST(horsepower AS FLOAT)
+WHERE ISNUMERIC(horsepower) = 1;
+
 ```
 
 **Type Conversion and Data Transformation**
@@ -114,6 +116,8 @@ FROM horsepower_ranges
 GROUP BY horsepower_group
 ORDER BY avg_mpg DESC;
 ```
+![](https://github.com/Abdulquadri2025/Auto-MPG/blob/main/categorization.png)
+
   - •	This classification was essential for grouped analysis and comparisons between fuel efficiency and engine power.
 
 **Standardization of Categorical Variables**
@@ -133,6 +137,8 @@ SELECT
 FROM auto_mpg
 GROUP BY origin;
 ```
+![](https://github.com/Abdulquadri2025/Auto-MPG/blob/main/standadization.png)
+
 This improved interpretability and was used in further visual and analytical summaries.
 
 **Data Analysis**
